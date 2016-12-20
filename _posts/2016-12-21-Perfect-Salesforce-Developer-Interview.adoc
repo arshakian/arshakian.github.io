@@ -1,0 +1,39 @@
+= Perfect Salesforce Developer Interview
+
+Hey all
+In this article, I want to tell my thoughts about what is wrong in typical salesforce developer interview and how to make it better. Every single piece of text below is only showing my opinion on what is good and bad on interviews questions (common ones) and answers.
+
+At first, I will start with my thoughts about developer community state. Two words: Just poor. For instance, lots of senior salesforce developer cannot apply the middle/junior level of overall development stuff, lots of really senior salesforce developers not digging deeper into salesforce platform – and, as the result, senior salesforce developer interview is something about pretty Common is salesforce, and some Common Uncommon situations, which developer facing during the development process. That differs salesforce community from other development communities – e.g. java, c#, javascript.. Just imagine largest java event with only 5% of developers attending along with only 5% of speeches are about development.
+
+That is why finding a good developer (not salesforce certified advanced certification master, and, sometimes, developer of a shitcode) is a big issue. I’ll summarize bad questions and bad answers by topic:
+
+== Data Model
+
+	Most of this questions are universal for developer of any level and admins/consultant, and most of them are good itself, but interviewer sometimes do not want to dig deeper into interviewee’s mind, while most of the interviewee’s are not curious enough to even think about some deep salesforce concepts and trying to figure how everything Is build deep down inside.  I am going to call that kind of developers as “I’m got paid enough to think about something”-syndrome developers.
+
+	Let’s start with questions:
+
+*Typical questions:* What kind of relationships do you know in salesforce? What kind of relationship fields do you know? What is junction object? What the limitations of master-detail relationship? Can you mock master-detail cascade deletion on lookups? What do you know about roll-up summary fields? [%hardbreaks]
+*Typical answers:* Ctrl+C + Ctrl+V from memory/help.salesforce.com. [%hardbreaks]
+*Why am I standing for other type of questions?* All of them covered by certifications, and most of developers/admins got one or more Salesforce certifications. You kill time, e.g. it will be very strange if senior salesforce developer/consultant will not answer one of them, and even if he or she does not know, how many lookup fields you can have on one object, or some other info – will it be critical? [%hardbreaks]
+
+=== My pick of questions to data model with reasons why:
+
+1.	Q: I want to have roll-up summary field behavior in lookup relation. How can I implement this?
+By asking this you will understand, does your interviewee ever write some reusable code (triggers to implement this feature) by himself or maybe he/she used some packages (financial force have custom roll-up summaries as far as I remember). This is a key question to see, if developer is experienced with triggers/apex. 
+2.	Q: When you delete master object – will it hit child trigger/workflow?
+Most of developers experienced with triggers and remembering the situations, when you think it will work – but it do not work the way most of us expect.
+3.	Q: Given the real organization (e.g. school) with defined entities customer what to store (e.g. for school: class, pupil, teacher, pupils mark, etc). Ask interviewee to build a data model with (using both standard and custom objects).
+By the provided answer, you can tell if the person you interviewing are:
+	a) Understanding when to use standard objects and when not
+b) Experienced to build flexible to enchantment but locked from changes data model structure
+4.	Q: Tell the difference between Custom Metadata and List Custom Settings.
+Maybe this questions is not 100% in data model – but sometimes list custom settings are used to store some configuration details, and this question is asked only to check if the person you are interviewing is really into salesforce and new approaches
+5.	Q: How Product relate to Opportunity Product? What is Pricebook and what problems you might have there? What examples of many-to-many relations you can name in standard object model? 
+This type of questions (you can ask anything about data model, e.g. person accounts and how they stored, maybe something from service cloud) but I’m pretty sure that every developer with 1-1.5+ years of experience can tell that things, because some of weird thing (e.g. Product object having Product2 API name) are easy to remember. Most of developers can think, that all of this is easy to google and you don’t need to store this – and they’ll be right, but for me – that type of knowledge is a quality mark for developer.
+
+== General Apex Coding
+
+	This type of questions are for developers only and even when developer interviewing another developer – sometimes some significant questions about development missed, but some typical questions asked instead.
+
+*TQ:* What is the difference between controller and extension? What percentage of coverage should be in code to be able to deploy in (and what you’re trying to obtain)
