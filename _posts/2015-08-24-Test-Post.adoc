@@ -1,6 +1,0 @@
-= Test Post
-
-== Test header
-
-
-BLAH BLAH GITHUB BLOG 100%
