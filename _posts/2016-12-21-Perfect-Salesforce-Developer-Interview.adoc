@@ -4,13 +4,19 @@
 
 
 Hey all
-In this article, I want to tell my thoughts about what is wrong in typical salesforce developer interview and how to make it better. Every single piece of text below is only showing my opinion on what is good and bad on interviews questions (common ones) and answers.
+
+:hardbreaks:
+
+_In this article_, I want to tell my thoughts about what is wrong in typical salesforce developer interview and how to make it better. Every single piece of text below is only showing my opinion on what is good and bad on interviews questions (common ones) and answers.
 
 At first, I will start with my thoughts about developer community state. Two words: Just poor. For instance, lots of senior salesforce developer cannot apply the middle/junior level of overall development stuff, lots of really senior salesforce developers not digging deeper into salesforce platform – and, as the result, senior salesforce developer interview is something about pretty Common is salesforce, and some Common Uncommon situations, which developer facing during the development process. That differs salesforce community from other development communities – e.g. java, c#, javascript.. Just imagine largest java event with only 5% of developers attending along with only 5% of speeches are about development.
 
-That is why finding a good developer (not salesforce certified advanced certification master, and, sometimes, developer of a shitcode) is a big issue. I’ll summarize bad questions and bad answers by topic:
+That is why finding a good developer (not salesforce certified advanced certification master, and, sometimes, developer of a shitcode) is a big issue. I’ll summarize bad questions and bad answers by topic.
+
 
 == Data Model
+image::http://s3.amazonaws.com/libapps/sites/1094/icons/3348/Misc-Web-Database-icon.png
+
 
 Most of this questions are universal for developer of any level and admins/consultant, and most of them are good itself, but interviewer sometimes do not want to dig deeper into interviewee’s mind, while most of the interviewee’s are not curious enough to even think about some deep salesforce concepts and trying to figure how everything Is build deep down inside.  I am going to call that kind of developers as “I’m got paid enough to think about something”-syndrome developers.
 
