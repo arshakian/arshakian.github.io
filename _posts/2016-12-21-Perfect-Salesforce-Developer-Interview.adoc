@@ -1,5 +1,5 @@
 = Perfect Salesforce Developer Interview
-:hp-image: http://rileyh.com/wp-content/uploads/2014/02/interview.jpg[]
+:hp-image: http://rileyh.com/wp-content/uploads/2014/02/interview.jpg
 :hp-tags: Interview, Thoughts, General
 
 
