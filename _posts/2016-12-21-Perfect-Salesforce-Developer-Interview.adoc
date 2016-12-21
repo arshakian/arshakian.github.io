@@ -37,6 +37,6 @@ This type of questions (you can ask anything about data model, e.g. person accou
 
 == General Apex Coding
 
-	This type of questions are for developers only and even when developer interviewing another developer – sometimes some significant questions about development missed, but some typical questions asked instead.
+This type of questions are for developers only and even when developer interviewing another developer – sometimes some significant questions about development missed, but some typical questions asked instead.
 
 *TQ:* What is the difference between controller and extension? What percentage of coverage should be in code to be able to deploy in (and what you’re trying to obtain)
