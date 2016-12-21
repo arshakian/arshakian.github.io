@@ -15,7 +15,7 @@ That is why finding a good developer (not salesforce certified advanced certific
 
 
 == Data Model
-image::dababase.png[Data Model, link="http://s3.amazonaws.com/libapps/sites/1094/icons/3348/Misc-Web-Database-icon.png"]
+image::http://s3.amazonaws.com/libapps/sites/1094/icons/3348/Misc-Web-Database-icon.png[Data Model]
 
 
 Most of this questions are universal for developer of any level and admins/consultant, and most of them are good itself, but interviewer sometimes do not want to dig deeper into interviewee’s mind, while most of the interviewee’s are not curious enough to even think about some deep salesforce concepts and trying to figure how everything Is build deep down inside.  I am going to call that kind of developers as “I’m got paid enough to think about something”-syndrome developers.
