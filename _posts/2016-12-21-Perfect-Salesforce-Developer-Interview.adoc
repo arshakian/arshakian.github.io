@@ -15,7 +15,7 @@ That is why finding a good developer (not a salesforce certified advanced certif
 
 
 == Data Model
-image::http://s3.amazonaws.com/libapps/sites/1094/icons/3348/Misc-Web-Database-icon.png[Data Model, 300, 300]
+image::http://s3.amazonaws.com/libapps/sites/1094/icons/3348/Misc-Web-Database-icon.png[Data Model, 400, 400]
 
 
 Most of this questions are universal for developer of any level and admins/consultant, and most of them are good itself, but interviewer sometimes do not want to dig deeper into interviewee’s mind, while most of the interviewees are not curious enough to even think about some deep salesforce concepts and trying to figure how everything Is build deep down inside.  I am going to call that kind of developers the as “I’m got paid enough to think about something”-syndrome developers.
@@ -48,7 +48,7 @@ This type of questions are for developers only and even when developer interview
 *TQ:* What is the difference between controller and extension? What percentage of coverage should be in code to be able to deploy in (and what you’re trying to obtain)
 *TA:* Well I've passed certifications and can simply repeat answers.
 
-=== My pick of questions 
+=== My pick
 
 1.     Q. What's the difference between synchronous and asynchronous apex in terms of limits, execution and use cases? What the types of asynchronous apex in Salesforce?
 Well, I can say that this type of question is pretty common and is also covered by certifications - but the purpose of this question is not about the standard things - where you can invoke future and where not - but about the use cases for future methods, batch jobs, scheduled jobs and queueable.
@@ -58,7 +58,26 @@ This question is very important and can be asked in case the interviewee claims 
 Yet again - this type of question is asked to get the answer about use cases - it's pretty common to met the Salesforce Developer (with Senior level and experience) who don't use classes separation, and most of OOP staff available for Apex. I know, and I mostly agree, that Apex one of the most dreaded languages and it's kinda limited with all the OOP stuff - but I didn't agree to write shitcode without the ability to reuse it, and making the code too hard to understand and extend. 
 4.      Q. Collections in Apex. How they are actually working. What's required for a class to implement to be able to use the class instance as a Key in Key-Value pair collection?
 I remember the day when I was a junior java developer - and I remember the questions asked to a junior java developer - and collections in java much more complicated than in Salesforce - but lots of developers are not thinking how it's implemented in a background (e.g. Map and Set are using HashSet and some HashMap implementation instead of TreeSet and TreeMap). By asking this I'm trying to understand, is the person I did interviewing actually knows algorithms and data structures at some pretty basic level - or the person is a Point-and-Click developer.
+5.       Q. SOQL: Ask to write the developer  
 
 
 == General Development & Development Process
-*Typical questions:* It seems, that the only thing which is asked - is about development process and tools. 
+*Typical questions:* Only thing, I've been asked during my interviews is about development process and tools in use. But that's *wrong* (IMHO) as salesforce developer is developer at first, and he should know basics that most of the developers (almost 90% if we're talking about backend developers)
+
+=== My Pick
+1.       Q. What is SOLID? DRY/YAGNI? Basic OOP Principles: Encapsulation, Polymorphism, Inheritance.
+So I personally think that those questions are the best for determining if the person you're interviewing is actually a Developer. There are only a few interviews which I had where the following topics were fully covered - in general, it's hard to guess by hearing the questions at the interview - for what position they are standing for.
+2.       Q. Do you use VC and CI systems like Git and Jenkins? Why (Why yes, or why no)? Basic Git questions (in case person have some experience with it): Merge vs Rebase, Interactive Rebase, Cherry Pick, HEAD and moving through the branches.
+Those questions being asked to understand if the interviewee understands the concepts of modern development, because if he does not understand, or do not use VC or CI with some arguments (e.g. "I'm working on small projects only", "Why we need CI when we have a Changesets").
+3.        Q.  What Design Patterns to you know?
+And yes, it's not enough to answer this question by simply naming the patterns - better to have the name, concept and use case.
+4.       Q. Algorithms and Data Structures. Name the Data Structures (collection name and corresponding data structure) in Apex.
+I think you might wonder why I do include this in a developer interview for a salesforce developer. Well, just because I think there should be no difference between regular backend/full stack developer and salesforce developer. 
+5.       Q. Coding assignment on some common programming task: Rotate Array, Merge Two Sorted Lists, Binary Tree Traversal...
+
+== Web Development & General
+*Typical questions:* Visualforce related: What is viewstate, how to use static resources, questions about tags and forms (actionSupport, actionRegion, etc). 
+*Typical answers:* Ctrl+C + Ctrl+V
+
+=== My Pick
+1.        Q. 
