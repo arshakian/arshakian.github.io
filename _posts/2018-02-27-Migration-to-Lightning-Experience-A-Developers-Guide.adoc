@@ -2,6 +2,40 @@
 :hp-image: https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png
 :hp-tags: Development, Lightning, Aura
 
+Almost two and a half years has passed since Salesforce announced their new and sexy Lightning Experience (a.k.a. LEX) - I found this amazing, but lots of organizations are still using Salesforce Classic UI! It's true, that some features are still unavailable for Lightning Experience, and some of the classics users still should postpone their migration to modern LEX, but it seems, that not only unreleased features is a problem with migration, but also some massive coding concepts have changed since then. This article will cover both - what's still not released in LEX, and what changed developer needs to apply to existing customization so this migration won't be unsuccessful for business.
+
+== Chapter I: Pre-Development Considerations
+
+Prior to development, you need to check, if it's possible to migrate to LEX - by Salesforce features which are already in the organization. Salesforce development team are doing their best to deliver most of the functionality to LEX, so, it only means that you can plan your migration pretty soon.
+Below are the list of the features, which are *not* available in LEX:
+* General Platform
+** *Javascript buttons*
+** Mass Actions On A Records List View
+** Mass Inline Editing for List View
+** *Recylcle Bin*
+** Printable View
+** *Manual Sharing*
+** 
+* Sales Cloud
+** *Account Contact Roles*
+** Account Teams (notice, that only part of functionallity is missing)
+** Account Partners
+** https://help.salesforce.com/articleView?id=admin_division.htm&type=5[Divisions]
+** Mass Email (for Users, Cases, Campaigns). Mass Email Scheduling
+** Forecasting
+** Similiar Opportunities
+** *Territory Management*
+** Opportunity Partners
+* Service Cloud
+** Public Knowledge
+** *Solutions*
+** Ideas
+** https://developer.salesforce.com/docs/atlas.en-us.noversion.service_sdk_android.meta/service_sdk_android/android_sos_overview.htm[SOS]
+** Knowledge (can be used, bot lots of functionallity is unavaliable at this moment)
+
+
+
+
 == Useful Resources
 
 * Trailhead Modules:
