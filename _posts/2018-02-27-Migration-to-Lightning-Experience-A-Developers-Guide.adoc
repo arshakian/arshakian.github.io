@@ -5,13 +5,13 @@
 == Useful Resources
 
 * Trailhead Modules:
-** Javascript Buttons Migration: https://trailhead.salesforce.com/modules/lex_javascript_button_migration
-** Lightning Experience Development: https://trailhead.salesforce.com/modules/lex_dev_overview
-** Visualforce to Lightning Migration: https://trailhead.salesforce.com/modules/lex_dev_visualforce
-** Lightning Rollout (more Admin): https://trailhead.salesforce.com/modules/lex_migration_rollout
+** https://trailhead.salesforce.com/modules/lex_javascript_button_migration[Javascript Buttons Migration]
+** https://trailhead.salesforce.com/modules/lex_dev_overview[Lightning Experience Development]
+** https://trailhead.salesforce.com/modules/lex_dev_visualforce[Visualforce to Lightning Migration]
+** https://trailhead.salesforce.com/modules/lex_migration_rollout[Lightning Rollout]
 * Salesforce Articles:
-** Which customization blocks are not available in LEX: https://help.salesforce.com/articleView?id=lex_migrate_customizations.htm&type=5
-** Comparsion of the LEX and Salesforce Classic: https://help.salesforce.com/articleView?id=lex_aloha_comparison.htm&type=5
-** https://help.salesforce.com/articleView?id=lex_considerations_intro.htm&type=5
+** https://help.salesforce.com/articleView?id=lex_migrate_customizations.htm&type=5[Which customization blocks are not available in LEX]
+** https://help.salesforce.com/articleView?id=lex_aloha_comparison.htm&type=5[Comparsion of the LEX and Salesforce Classic]
+** https://help.salesforce.com/articleView?id=lex_considerations_intro.htm&type=5[Consideration Prior To Lightning Experience Rollout]
 
 
