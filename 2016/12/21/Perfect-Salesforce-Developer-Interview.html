@@ -23,7 +23,7 @@
     <meta property="og:url" content="https://arshakian.github.io/2016/12/21/Perfect-Salesforce-Developer-Interview.html" />
     <meta property="og:image" content="http://rileyh.com/wp-content/uploads/2014/02/interview.jpg" />
     <meta property="article:published_time" content="2016-12-20T22:00:00.000Z" />
-    <meta property="article:modified_time" content="2017-05-02T15:33:17.000Z" />
+    <meta property="article:modified_time" content="2018-02-27T14:59:42.476Z" />
     <meta property="article:tag" content="Interview" />
     <meta property="article:tag" content="Thoughts" />
     <meta property="article:tag" content="General" />
@@ -42,14 +42,14 @@
     "author": {
         "@type": "Person",
         "name": "George Arshakian",
-        "image": "https://avatars0.githubusercontent.com/u/13949193?v=3",
+        "image": "https://avatars3.githubusercontent.com/u/13949193?v=4",
         "url": "undefined/author/undefined",
-        "sameAs": null
+        "sameAs": ""
     },
     "headline": "Perfect Salesforce Developer Interview",
     "url": "https://arshakian.github.io/2016/12/21/Perfect-Salesforce-Developer-Interview.html",
     "datePublished": "2016-12-20T22:00:00.000Z",
-    "dateModified": "2017-05-02T15:33:17.000Z",
+    "dateModified": "2018-02-27T14:59:42.476Z",
     "image": "http://rileyh.com/wp-content/uploads/2014/02/interview.jpg",
     "keywords": "Interview,  Thoughts,  General",
     "description": "Hey all In this article, I want to tell my thoughts about what is wrong in typical salesforce developer interview and how to make it better. Every single piece of text below is only showing my opinion on what is..."
@@ -90,13 +90,13 @@
 <p>Hey all</p>
 </div>
 <div class="paragraph">
-<p><em>In this article</em>, I want to tell my thoughts about what is wrong in typical salesforce developer interview and how to make it better. Every single piece of text below is only showing my opinion on what is good and bad in interviews questions (common ones) and answers.</p>
+<p>In this article, I want to tell my thoughts about what is wrong in typical salesforce developer interview and how to make it better. Every single piece of text below is only showing my opinion on what is good and bad in interviews questions (common ones) and answers.</p>
 </div>
 <div class="paragraph">
-<p>At first, I will start with my thoughts about developer community state. Two words: Just poor. For instance, lots of senior salesforce developer cannot apply the middle/junior level of overall development stuff, lots of really senior salesforce developers not digging deeper into salesforce platform – and, as the result, senior salesforce developer interview is something about pretty Common is salesforce, and some Common Uncommon situations, which developer facing during the development process. That differs salesforce community from other development communities – e.g. java, c#, javascript&#8230;&#8203; Just imagine largest java event with only 5% of developers attending along with only 5% of speeches is about development.</p>
+<p>At first, I will start with my thoughts about developers community overall state. It might be specific only to Ukrainian/CIS community, but as far as I know, a situation is near the same as worldwide. Community state in one word? Poor. For instance, lots of senior salesforce developer cannot apply the middle/junior level of overall backend/fullstack development, lots of really senior salesforce developers not digging deeper into salesforce platform – and, as the result, senior salesforce developer interview is something about pretty Common is salesforce, and some Common Uncommon situations, which developer facing during the development process. That differs salesforce community from other development communities – e.g. java, c#, javascript&#8230;&#8203; Just imagine largest java event with only 5% of developers attending along with only 5% of speeches is about development. Yes, I can understand, that this in a result of the Salesforce marketing campaign (1-800-NOSOFTWARE, etc), but it&#8217;s clear that in last 3 years company is trying to improve community (trailhead, trailheaDX, new development tools). Let&#8217;s hope that this won&#8217;t be just marketing for their development products like debugger, but also will positively affect our community.</p>
 </div>
 <div class="paragraph">
-<p>That is why finding a good developer (not a salesforce certified advanced certification master or senior shitcode developer) is a big issue. I’ll summarize bad questions - with some of the original replacement to them below. I hope that by improving the interviews we can somehow improve the quality of the Salesforce community and maybe cold down the market of salesforce developers.</p>
+<p>That is why finding a good developer (not a salesforce certified advanced certification master or senior shitcode developer) is a big issue. I’ll summarize bad questions below - with some of the original replacement to them below. I hope that by improving the interviews we can somehow improve the quality of the Salesforce community and maybe cool down the market of Salesforce developers (which is, obviously, overheated)</p>
 </div>
 </div>
 </div>
@@ -105,7 +105,7 @@
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
-<img src="http://s3.amazonaws.com/libapps/sites/1094/icons/3348/Misc-Web-Database-icon.png" alt="Data Model" width="400" height="400">
+<img src="https://developer.salesforce.com/docs/resources/img/en-us/212.0?doc_id=dev_guides%2Fapi%2Fimages%2FSforce_major_objects.png" alt="Data Model" width="714" height="764">
 </div>
 </div>
 <div class="paragraph">
@@ -133,7 +133,7 @@ Most of the developers experienced with triggers and remembering the situations 
 </li>
 <li>
 <p>Q: Given the real organization (e.g. school) with defined entities customer what to store (e.g. for school: class, pupil, teacher, pupils mark, etc). Ask the interviewee to build a data model with (using both standard and custom objects).<br>
-By the provided answer, you can tell if the person you interviewing are:<br>
+By the provided answer, you can tell if the person you interviewed is:<br>
     a) Understanding when to use standard objects and when not<br>
 b) Experienced to build flexible to enchantment but locked from changes data model structure</p>
 </li>
@@ -142,7 +142,7 @@ b) Experienced to build flexible to enchantment but locked from changes data mod
 Maybe this questions is not 100% in data model – but sometimes list custom settings are used to store some configuration details, and this question is asked only to check if the person you are interviewing is really into salesforce and new approaches</p>
 </li>
 <li>
-<p>Q: How Product relate to Opportunity Product? What is Pricebook and what problems you might have there? What examples of many-to-many relations can you name in standard object model?<br>
+<p>Q: How Product relates to Opportunity Product? What is Pricebook and what problems you might have there? What examples of many-to-many relations can you name in standard object model?<br>
 This type of questions (you can ask anything about data model, e.g. person accounts and how they stored, maybe something from service cloud) but I’m pretty sure that every developer with 1-1.5+ years of experience can tell that things, because some of the weird thing (e.g. Product object having Product2 API name) are easy to remember. Most of the developers can think, that all of this is easy to google and you don’t need to store this – and they’ll be right, but for me – that type of knowledge is a quality mark for the developer.</p>
 </li>
 </ol>
@@ -153,6 +153,11 @@ This type of questions (you can ask anything about data model, e.g. person accou
 <div class="sect1">
 <h2 id="_general_apex_coding">General Apex Coding</h2>
 <div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="https://openclipart.org/image/800px/svg_to_png/286094/Gears.png" alt="Apex" width="400" height="400">
+</div>
+</div>
 <div class="paragraph">
 <p>This type of questions are for developers only and even when developer interviewing another developer – sometimes some significant questions about development missed, but some typical questions asked instead.</p>
 </div>
@@ -170,7 +175,7 @@ Well, I can say that this type of question is pretty common and is also covered 
 </li>
 <li>
 <p>Q. Dynamical things available for apex: Queries, Dynamical Method Invocation, etc.<br>
-This question is very important and can be asked in case the interviewee claims he or she did some packages development. By answer on this question, we can also determine, how complex and agile were the solutions that were built by this person - because I&#8217;ve met peoples with 3+ years of Salesforce development - and they didn&#8217;t know that you can invoke class methods by only knowing the name of this class.</p>
+This question is very important and can be asked in case the interviewee claims he or she did some packages development. With the answer on this question, we can also determine, how complex and agile were the solutions that were built by this person - because I&#8217;ve met peoples with 3+ years of Salesforce development - and they didn&#8217;t know that you can invoke class methods by only knowing the name of this class.</p>
 </li>
 <li>
 <p>Q. Abstract keyword, Virtual keyword, Interface keyword. Define, use cases.<br>
@@ -181,7 +186,7 @@ Yet again - this type of question is asked to get the answer about use cases - i
 I remember the day when I was a junior java developer - and I remember the questions asked to a junior java developer - and collections in java much more complicated than in Salesforce - but lots of developers are not thinking how it&#8217;s implemented in a background (e.g. Map and Set are using HashSet and some HashMap implementation instead of TreeSet and TreeMap). By asking this I&#8217;m trying to understand, is the person I did interviewing actually knows algorithms and data structures at some pretty basic level - or the person is a Point-and-Click developer.</p>
 </li>
 <li>
-<p>Q. SOQL: Ask to write the developer</p>
+<p>Q. SOQL: Ask the developer to write a very uncommon query with aggregations, grouping. Usually, Salesforce-Only developers struggle with this - and this is expected, as most of the developers not utilizing the full power of SOQL.</p>
 </li>
 </ol>
 </div>
@@ -191,19 +196,27 @@ I remember the day when I was a junior java developer - and I remember the quest
 <div class="sect1">
 <h2 id="_general_development_development_process">General Development &amp; Development Process</h2>
 <div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="https://images-na.ssl-images-amazon.com/images/I/51Q3QRRRERL._SX258_BO1,204,203,200_.jpg" alt="Apex" width="334" height="260">
+</div>
+</div>
 <div class="paragraph">
-<p><strong>Typical questions:</strong> Only thing, I&#8217;ve been asked during my interviews is about development process and tools in use. But that&#8217;s <strong>wrong</strong> (IMHO) as salesforce developer is developer at first, and he should know basics that most of the developers (almost 90% if we&#8217;re talking about backend developers)</p>
+<p><strong>Typical questions:</strong> Only thing, I&#8217;ve been asked during my interviews is about development process and tools in use. But that&#8217;s <strong>wrong</strong> (IMHO) as salesforce developer is developer at first, and he should know basics that most of the developers (almost 90% if we&#8217;re talking about backend developers).</p>
 </div>
 <div class="sect2">
 <h3 id="_my_pick_2">My Pick</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
+<p>Q. (That&#8217;s the question I&#8217;m asking during EVERY interview). What development principles you&#8217;re using in your everyday development experience?. I&#8217;m expecting the person to say at least something about OOP principles, general programming principles (exclude goto, self-repeat, modules, pipes, layers), Design Patterns, Enterprise patters - everything, which helps the conversation to get started</p>
+</li>
+<li>
 <p>Q. What is SOLID? DRY/YAGNI? Basic OOP Principles: Encapsulation, Polymorphism, Inheritance.<br>
 So I personally think that those questions are the best for determining if the person you&#8217;re interviewing is actually a Developer. There are only a few interviews which I had where the following topics were fully covered - in general, it&#8217;s hard to guess by hearing the questions at the interview - for what position they are standing for.</p>
 </li>
 <li>
-<p>Q. Do you use VC and CI systems like Git and Jenkins? Why (Why yes, or why no)? Basic Git questions (in case person have some experience with it): Merge vs Rebase, Interactive Rebase, Cherry Pick, HEAD and moving through the branches.<br>
+<p>Q. Do you use VC and CI systems like Git and Jenkins? Why (Both for positive and negative answer)? Basic Git questions (in case person have some experience with it): Merge vs Rebase, Interactive Rebase, Cherry Pick, HEAD and moving through the branches.<br>
 Those questions being asked to understand if the interviewee understands the concepts of modern development, because if he does not understand, or do not use VC or CI with some arguments (e.g. "I&#8217;m working on small projects only", "Why we need CI when we have a Changesets").</p>
 </li>
 <li>
@@ -212,7 +225,7 @@ And yes, it&#8217;s not enough to answer this question by simply naming the patt
 </li>
 <li>
 <p>Q. Algorithms and Data Structures. Name the Data Structures (collection name and corresponding data structure) in Apex.<br>
-I think you might wonder why I do include this in a developer interview for a salesforce developer. Well, just because I think there should be no difference between regular backend/full stack developer and salesforce developer.</p>
+I think you might wonder why I do include this in a developer interview for a Salesforce developer. Well, just because I think there should be no difference between regular backend/full stack developer and salesforce developer.</p>
 </li>
 <li>
 <p>Q. Coding assignment on some common programming task: Rotate Array, Merge Two Sorted Lists, Binary Tree Traversal&#8230;&#8203;</p>
@@ -223,21 +236,60 @@ I think you might wonder why I do include this in a developer interview for a sa
 </div>
 </div>
 <div class="sect1">
-<h2 id="_web_development_general">Web Development &amp; General</h2>
+<h2 id="_frontend">Frontend</h2>
 <div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="https://image.freepik.com/free-photo/web-design-concept-with-drawings_1134-77.jpg" alt="Apex" width="626" height="417">
+</div>
+</div>
 <div class="paragraph">
-<p><strong>Typical questions:</strong> Visualforce related: What is viewstate, how to use static resources, questions about tags and forms (actionSupport, actionRegion, etc).<br>
-<strong>Typical answers:</strong> Ctrl+C + Ctrl+V</p>
+<p><strong>Typical questions:</strong> Visualforce related: What is view state, how to use static resources, questions about tags and forms (actionSupport, actionRegion, etc).<br>
+<strong>Typical answers:</strong> Ctrl+C + Ctrl+V from standard documentation. Everybody expects the question about 135k view state on the interview and knows the answer - so, what&#8217;s the point of keeping those questions in the interview?</p>
 </div>
 <div class="sect2">
 <h3 id="_my_pick_3">My Pick</h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Q.</p>
+<p>Q. Define HTML5 features, which you&#8217;re using in your code? Is there any standard for Visualforce markup? A difference between div/span, block versus inline?</p>
+</li>
+<li>
+<p>Q. Are you using any standard for you lightning code? What&#8217;s ES6, promises? How javascript uses inheritance?</p>
+</li>
+<li>
+<p>Q. Aura framework questions: How to extend component? Events vs aura:method? Initialization order of the component structure?</p>
+</li>
+<li>
+<p>Q. Define possible problems when migrating existing VF page to Lightning Components? When it&#8217;s better to utilize &lt;apex:slds/&gt; - and when - to rewrite from scratch? Any concerns about 3rd party JS frameworks/libraries?</p>
+</li>
+<li>
+<p>Q. Given a website (e.g. google.com). Define, what will be the component structure if the requirements will be to copy this page with every element wrapped with a custom lightning component. Communication between components? // Can be the same question for visualforce/visualforce components.</p>
 </li>
 </ol>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_final_words">Final words</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="https://www.universallearningacademy.com/wp-content/uploads/2016/02/interview-success.jpg" alt="Apex" width="300" height="600">
+</div>
+</div>
+<div class="paragraph">
+<p>What will make your next interview better?</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re an interviewer - then find some time to prepare to the interview - read through your interviewee&#8217;s CV, find both weak and strong spots in there - try to personalize the interview experience as much as possible. Don&#8217;t use textbook questions - that&#8217;s not the way how you&#8217;ll define if the person if matching the position. Try to understand - at the moment of the interview - you&#8217;re representing the whole company, so try to be friendly, try to be public with your thought as much as possible. And, of course, try to use those questions I&#8217;ve mentioned in this article :)</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re an interviewee - one very simple rule: If you don&#8217;t know the answer - don&#8217;t waste your (and interviewer&#8217;s) time. Be a learner, not an "I know everything I just need some time to remember"-guy.</p>
+</div>
+<div class="paragraph">
+<p>P.S. There&#8217;s two articles, which were published during this blog post were created: <a href="https://corevalue.net/what-features-did-we-miss-in-salesforce-spring-17-release/" class="bare">https://corevalue.net/what-features-did-we-miss-in-salesforce-spring-17-release/</a> and <a href="https://corevalue.net/great-features-developers-might-have-missed-in-the-summer-17-release/" class="bare">https://corevalue.net/great-features-developers-might-have-missed-in-the-summer-17-release/</a></p>
 </div>
 </div>
 </div>
