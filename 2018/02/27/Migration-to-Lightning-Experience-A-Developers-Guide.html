@@ -19,18 +19,18 @@
     <meta property="og:site_name" content="George Arshakian Personal Blog" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Migration to Lightning Experience: A Developer&#x27;s Guide" />
-    <meta property="og:description" content="Useful Resources Trailhead Modules: Javascript Buttons Migration Lightning Experience Development Visualforce to Lightning Migration Lightning Rollout Salesforce Articles: Which customization blocks are not available in LEX Comparsion of the LEX and Salesforce Classic Considerat..." />
+    <meta property="og:description" content="Almost two and a half years has passed since Salesforce announced their new and sexy Lightning Experience (a.k.a. LEX) - I found this amazing, but lots of organizations are still using Salesforce Classic UI! It&amp;#8217;s true,..." />
     <meta property="og:url" content="https://arshakian.github.io/2018/02/27/Migration-to-Lightning-Experience-A-Developers-Guide.html" />
     <meta property="og:image" content="https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png" />
     <meta property="article:published_time" content="2018-02-26T22:00:00.000Z" />
-    <meta property="article:modified_time" content="2018-02-27T16:53:13.835Z" />
+    <meta property="article:modified_time" content="2018-02-27T20:11:28.140Z" />
     <meta property="article:tag" content="Development" />
     <meta property="article:tag" content="Lightning" />
     <meta property="article:tag" content="Aura" />
     
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Migration to Lightning Experience: A Developer&#x27;s Guide" />
-    <meta name="twitter:description" content="Useful Resources Trailhead Modules: Javascript Buttons Migration Lightning Experience Development Visualforce to Lightning Migration Lightning Rollout Salesforce Articles: Which customization blocks are not available in LEX Comparsion of the LEX and Salesforce Classic Considerat..." />
+    <meta name="twitter:description" content="Almost two and a half years has passed since Salesforce announced their new and sexy Lightning Experience (a.k.a. LEX) - I found this amazing, but lots of organizations are still using Salesforce Classic UI! It&amp;#8217;s true,..." />
     <meta name="twitter:url" content="https://arshakian.github.io/2018/02/27/Migration-to-Lightning-Experience-A-Developers-Guide.html" />
     <meta name="twitter:image:src" content="https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png" />
     
@@ -49,10 +49,10 @@
     "headline": "Migration to Lightning Experience: A Developer&#x27;s Guide",
     "url": "https://arshakian.github.io/2018/02/27/Migration-to-Lightning-Experience-A-Developers-Guide.html",
     "datePublished": "2018-02-26T22:00:00.000Z",
-    "dateModified": "2018-02-27T16:53:13.835Z",
+    "dateModified": "2018-02-27T20:11:28.140Z",
     "image": "https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png",
     "keywords": "Development,  Lightning,  Aura",
-    "description": "Useful Resources Trailhead Modules: Javascript Buttons Migration Lightning Experience Development Visualforce to Lightning Migration Lightning Rollout Salesforce Articles: Which customization blocks are not available in LEX Comparsion of the LEX and Salesforce Classic Considerat..."
+    "description": "Almost two and a half years has passed since Salesforce announced their new and sexy Lightning Experience (a.k.a. LEX) - I found this amazing, but lots of organizations are still using Salesforce Classic UI! It&amp;#8217;s true,..."
 }
     </script>
 
@@ -84,7 +84,47 @@
 <main id="main" class="content">
     <article itemtype="http://schema.org/BlogPosting" class="animated fadeIn content post post tag-Development tag-Lightning tag-Aura">
         <section class="post-content">
-            <div class="sect1">
+            <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Almost two and a half years has passed since Salesforce announced their new and sexy Lightning Experience (a.k.a. LEX) - I found this amazing, but lots of organizations are still using Salesforce Classic UI! It&#8217;s true, that some features are still unavailable for Lightning Experience, and some of the classics users still should postpone their migration to modern LEX, but it seems, that not only unreleased features is a problem with migration, but also some massive coding concepts have changed since then. This article will cover both - what&#8217;s still not released in LEX, and what changed developer needs to apply to existing customization so this migration won&#8217;t be unsuccessful for business.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_chapter_i_pre_development_considerations">Chapter I: Pre-Development Considerations</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Prior to development, you need to check, if it&#8217;s possible to migrate to LEX - by Salesforce features which are already in the organization. Salesforce development team are doing their best to deliver most of the functionality to LEX, so, it only means that you can plan your migration pretty soon.
+Below are the list of the features, which are <strong>not</strong> available in LEX:
+* General Platform
+<strong> <strong>Javascript buttons</strong>
+</strong> Mass Actions On A Records List View
+<strong> Mass Inline Editing for List View
+</strong> <strong>Recylcle Bin</strong>
+<strong> Printable View
+</strong> <strong>Manual Sharing</strong>
+<strong>
+* Sales Cloud
+</strong> <strong>Account Contact Roles</strong>
+<strong> Account Teams (notice, that only part of functionallity is missing)
+</strong> Account Partners
+<strong> <a href="https://help.salesforce.com/articleView?id=admin_division.htm&amp;type=5">Divisions</a>
+</strong> Mass Email (for Users, Cases, Campaigns). Mass Email Scheduling
+<strong> Forecasting
+</strong> Similiar Opportunities
+<strong> <strong>Territory Management</strong>
+</strong> Opportunity Partners
+* Service Cloud
+<strong> Public Knowledge
+</strong> <strong>Solutions</strong>
+<strong> Ideas
+</strong> <a href="https://developer.salesforce.com/docs/atlas.en-us.noversion.service_sdk_android.meta/service_sdk_android/android_sos_overview.htm">SOS</a>
+** Knowledge (can be used, bot lots of functionallity is unavaliable at this moment)</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_useful_resources">Useful Resources</h2>
 <div class="sectionbody">
 <div class="ulist">
