@@ -1,0 +1,3 @@
+= Migration to Lightning Experience: A Developer's Guide
+:hp-image: https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png
+:hp-tags: Development, Lightning, Aura
