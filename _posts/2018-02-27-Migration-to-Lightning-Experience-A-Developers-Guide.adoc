@@ -8,6 +8,7 @@ Almost two and a half years has passed since Salesforce announced their new and 
 
 Prior to development, you need to check, if it's possible to migrate to LEX - by Salesforce features which are already in the organization. Salesforce development team are doing their best to deliver most of the functionality to LEX, so, it only means that you can plan your migration pretty soon.
 Below are the list of the features, which are *not* available in LEX:
+
 * General Platform
 ** Javascript buttons
 ** Mass Actions On A Records List View
