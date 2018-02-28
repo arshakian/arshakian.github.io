@@ -10,21 +10,21 @@ Prior to development, you need to check, if it's possible to migrate to LEX - by
 Below are the list of the features, which are *not* available in LEX:
 
 * General Platform
-** Javascript buttons
+** *Javascript buttons*
 ** Mass Actions On A Records List View
 ** Mass Inline Editing for List View
-** Recylcle Bin
+** *Recylcle Bin*
 ** Printable View
-** Manual Sharing
+** *Manual Sharing*
 * Sales Cloud
-** Account Contact Roles
+** *Account Contact Roles*
 ** Account Teams (notice, that only part of functionallity is missing)
 ** Account Partners
 ** https://help.salesforce.com/articleView?id=admin_division.htm&type=5[Divisions]
 ** Mass Email (for Users, Cases, Campaigns). Mass Email Scheduling
 ** Forecasting
 ** Similiar Opportunities
-** Territory Management
+** *Territory Management*
 ** Opportunity Partners
 * Service Cloud
 ** Public Knowledge
