@@ -18,11 +18,10 @@ Below are the list of the features, which are *not* available in LEX:
 ** *Manual Sharing*
 * Sales Cloud
 ** *Account Contact Roles*
-** Account Teams (notice, that only part of functionallity is missing)
 ** Account Partners
 ** https://help.salesforce.com/articleView?id=admin_division.htm&type=5[Divisions]
 ** Mass Email (for Users, Cases, Campaigns). Mass Email Scheduling
-** Forecasting
+** Customizable Forecasting
 ** Similiar Opportunities
 ** *Territory Management*
 ** Opportunity Partners
@@ -33,6 +32,9 @@ Below are the list of the features, which are *not* available in LEX:
 ** https://developer.salesforce.com/docs/atlas.en-us.noversion.service_sdk_android.meta/service_sdk_android/android_sos_overview.htm[SOS]
 ** Knowledge (can be used, bot lots of functionallity is unavaliable at this moment)
 
+If your business is OK to switch to Salesforce Classic to continue to use those features - then you'll be fine to proceed with customization changes
+
+== Chapter II: Moving Customization To LEX
 
 
 
