@@ -45,7 +45,20 @@ Basically, two main issues when you're migration will be:
 
 The main point here will be - change the javascript buttons to lightning quick actions, https://trailhead.salesforce.com/modules/lex_javascript_button_migration[here] it's descirbed in details on how to do this. The reason do ban javascript buttons is simple - it's unsafe, and usually not very user friendly. Below I'll put a simple example on how to change button from Javascript to a Lightning Quick Action.
 
-==== 0. Identify 
+==== 1. Identify The Process Behind Your Button
+
+==== 2. Move the code and publish changes to the layout
+
+
+
+=== Visualforce Pages
+
+Every scenario here is pretty unique, however, few common page types can be separated: Reports pages, PDF-rendered pages and new/edit/view papes. For the PDF we'll keep it as it is - as no changes and no ability to render lightning components as a pdf. But for the report-like and new/edit/view pages we have to change it to the lightning UI;
+
+==== 1. Set the lightning styles
+
+==== 2. Transform the Visualforce page into set of Lightning Components
+
 
 == Useful Resources
 
