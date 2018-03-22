@@ -23,7 +23,7 @@
     <meta property="og:url" content="https://arshakian.github.io/2018/02/27/Migration-to-Lightning-Experience-A-Developers-Guide.html" />
     <meta property="og:image" content="https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png" />
     <meta property="article:published_time" content="2018-02-26T22:00:00.000Z" />
-    <meta property="article:modified_time" content="2018-02-28T12:33:18.432Z" />
+    <meta property="article:modified_time" content="2018-03-22T15:44:54.564Z" />
     <meta property="article:tag" content="Development" />
     <meta property="article:tag" content="Lightning" />
     <meta property="article:tag" content="Aura" />
@@ -49,7 +49,7 @@
     "headline": "Migration to Lightning Experience: A Developer&#x27;s Guide",
     "url": "https://arshakian.github.io/2018/02/27/Migration-to-Lightning-Experience-A-Developers-Guide.html",
     "datePublished": "2018-02-26T22:00:00.000Z",
-    "dateModified": "2018-02-28T12:33:18.432Z",
+    "dateModified": "2018-03-22T15:44:54.564Z",
     "image": "https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png",
     "keywords": "Development,  Lightning,  Aura",
     "description": "Almost two and a half years has passed since Salesforce announced their new and sexy Lightning Experience (a.k.a. LEX) - I found this amazing, but lots of organizations are still using Salesforce Classic UI! It&amp;#8217;s true,..."
@@ -186,9 +186,31 @@ Below are the list of the features, which are <strong>not</strong> available in 
 </div>
 </div>
 <div class="sect1">
-<h2 id="_chapter_ii_moving_customization_to_lex">Chapter II: Moving Customization To LEX</h2>
+<h2 id="_chapter_ii_moving_existing_customization_to_lex">Chapter II: Moving Existing Customization To LEX</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Basically, two main issues when you&#8217;re migration will be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Custom Javascript Buttons (some people still have all the business logic developed as a series of custom buttons!)</p>
+</li>
+<li>
+<p>Visualforce Pages</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_custom_javascript_buttons">Custom Javascript Buttons</h3>
+<div class="paragraph">
+<p>The main point here will be - change the javascript buttons to lightning quick actions, <a href="https://trailhead.salesforce.com/modules/lex_javascript_button_migration">here</a> it&#8217;s descirbed in details on how to do this. The reason do ban javascript buttons is simple - it&#8217;s unsafe, and usually not very user friendly. Below I&#8217;ll put a simple example on how to change button from Javascript to a Lightning Quick Action.</p>
+</div>
+<div class="sect3">
+<h4 id="_0_identify">0. Identify</h4>
 
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
