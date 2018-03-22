@@ -34,9 +34,18 @@ Below are the list of the features, which are *not* available in LEX:
 
 If your business is OK to switch to Salesforce Classic to continue to use those features - then you'll be fine to proceed with customization changes
 
-== Chapter II: Moving Customization To LEX
+== Chapter II: Moving Existing Customization To LEX
 
+Basically, two main issues when you're migration will be:
 
+* Custom Javascript Buttons (some people still have all the business logic developed as a series of custom buttons!)
+* Visualforce Pages
+
+=== Custom Javascript Buttons
+
+The main point here will be - change the javascript buttons to lightning quick actions, https://trailhead.salesforce.com/modules/lex_javascript_button_migration[here] it's descirbed in details on how to do this. The reason do ban javascript buttons is simple - it's unsafe, and usually not very user friendly. Below I'll put a simple example on how to change button from Javascript to a Lightning Quick Action.
+
+==== 0. Identify 
 
 == Useful Resources
 
