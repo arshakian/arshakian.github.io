@@ -2,18 +2,18 @@
 :hp-image: https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png
 :hp-tags: Development, Lightning, Aura
 
-Almost two and a half years has passed since Salesforce announced their new and sexy Lightning Experience (a.k.a. LEX) - I found this amazing, but lots of organizations are still using Salesforce Classic UI! It's true, that some features are still unavailable for Lightning Experience, and some of the classics users still should postpone their migration to modern LEX, but it seems, that not only unreleased features is a problem with migration, but also some massive coding concepts have changed since then. This article will cover both - what's still not released in LEX, and what changed developer needs to apply to existing customization so this migration won't be unsuccessful for business.
+Almost two and a half years have passed since Salesforce announced their new and sexy Lightning Experience (a.k.a. LEX) - I found this amazing, but lots of organizations are still using Salesforce Classic UI! It's true, that some features are still unavailable for Lightning Experience, and some of the classics users still should postpone their migration to modern LEX, but it seems, that not only unreleased features is a problem with migration, but also some massive coding concepts have changed since then. This article will cover both - what's still not released in LEX, and what changed developer needs to apply to existing customization so this migration won't be unsuccessful for business.
 
 == Chapter I: Pre-Development Considerations
 
 Prior to development, you need to check, if it's possible to migrate to LEX - by Salesforce features which are already in the organization. Salesforce development team are doing their best to deliver most of the functionality to LEX, so, it only means that you can plan your migration pretty soon.
-Below are the list of the features, which are *not* available in LEX:
+Below is the list of the features, which are *not* available in LEX:
 
 * General Platform
 ** *Javascript buttons*
 ** Mass Actions On A Records List View
 ** Mass Inline Editing for List View
-** *Recylcle Bin*
+** *Recycle Bin*
 ** Printable View
 ** *Manual Sharing*
 * Sales Cloud
@@ -30,7 +30,7 @@ Below are the list of the features, which are *not* available in LEX:
 ** Solutions
 ** Ideas
 ** https://developer.salesforce.com/docs/atlas.en-us.noversion.service_sdk_android.meta/service_sdk_android/android_sos_overview.htm[SOS]
-** Knowledge (can be used, bot lots of functionallity is unavaliable at this moment)
+** Knowledge (can be used, but lots of functionality is unavailable at this moment)
 
 If your business is OK to switch to Salesforce Classic to continue to use those features - then you'll be fine to proceed with customization changes
 
@@ -43,11 +43,11 @@ Basically, two main issues when you're migration will be:
 
 === Custom Javascript Buttons
 
-The main point here will be - change the javascript buttons to lightning quick actions, https://trailhead.salesforce.com/modules/lex_javascript_button_migration[here] it's descirbed in details on how to do this. The reason do ban javascript buttons is simple - it's unsafe, and usually not very user friendly. Below I'll put a simple example on how to change button from Javascript to a Lightning Quick Action.
+The main point here will be - change the javascript buttons to lightning quick actions, https://trailhead.salesforce.com/modules/lex_javascript_button_migration[here] it's described in details on how to do this. The reason do ban javascript buttons is simple - it's unsafe, and usually not very user-friendly. Below I'll put a simple example on how to change the button from Javascript to a Lightning Quick Action.
 
 ==== 1. Identify The Process Behind Your Button
 
-There are alot of the use cases for Javascript buttons - from simple record update - to difficult business process of creation of the data model along with triggering the webservice from Apex. Basically, the more complex your javascript button logic is - the worse is system design - and this requires rework of the whole process. But for a simple record update/new records creation, there's a very simple process of transition, which in a result will give *No Changes* for an end user flow.
+There are a lot of the use cases for Javascript buttons - from simple record update - to difficult business process of creation of the data model along with triggering the webservice from Apex. Basically, the more complex your javascript button logic is - the worse is system design - and this requires rework of the whole process. But for a simple record update/new records creation, there's a very simple process of transition, which as a result will give *No Changes* for an end user flow.
 
 ==== 2. Move the code!
 
@@ -69,22 +69,22 @@ if ( type != "Social" )
 
 else 
 { 
-	сaseObject.Type = "Social Plus";
-	var result = sforce.connection.update([сaseObject]); 
+    сaseObject.Type = "Social Plus";
+    var result = sforce.connection.update([сaseObject]); 
 
-	if (result[0].success == "true") 
-	{ 
-		location.reload(true); 
-	} 
+    if (result[0].success == "true") 
+    { 
+        location.reload(true); 
+    } 
 
-	else 
-	{ 
-		alert(result[0].errors.message); 
-	} 
+    else 
+    { 
+        alert(result[0].errors.message); 
+    } 
 }
 ----
 
-Process is simple as 1-2-3: Check the case type and update it if it's social. It's super easy to move this process to lightning component - no Apex required!
+The process is simple as 1-2-3: Check the case type and update it if it's social. It's super easy to move this process to lightning component - no Apex required!
 
 .TransformSocialCaseAction.cmp
 [source,html]
@@ -135,27 +135,27 @@ Process is simple as 1-2-3: Check the case type and update it if it's social. It
         var caseObject = component.get("v.record");
 
         if (caseObject.Type != "Social") {
-        	component.set("v.recordError", "error message for non-social case");
+            component.set("v.recordError", "error message for non-social case");
         } else {
-        	caseObject.Type = "Social Plus"
-        	component.set("v.record", caseObject);
-        	component.find("recordLoader").saveRecord(
-        		$A.getCallback(
-        			function(saveResult) {
-        				//You can add error handling here
-        			}
-        		)
-        	);
+            caseObject.Type = "Social Plus"
+            component.set("v.record", caseObject);
+            component.find("recordLoader").saveRecord(
+                $A.getCallback(
+                    function(saveResult) {
+                        //You can add error handling here
+                    }
+                )
+            );
         }
     }
 })
 ----
 
-Final step will be simple - create action with this component for Case sObject and add it to the layout! No Apex/3rd-party library required.
+A Final step will be simple - create action with this component for Case sObject and add it to the layout! No Apex/3rd-party library required.
 
 === Visualforce Pages
 
-Every scenario here is pretty unique, however, few common page types can be separated: Reports pages, PDF-rendered pages and new/edit/view papes. For the PDF we'll keep it as it is - as no changes and no ability to render lightning components as a pdf. But for the report-like and new/edit/view pages we have to change it to the lightning UI;
+Every scenario here is pretty unique, however, few common page types can be separated: Reports pages, PDF-rendered pages, and new/edit/view papes. For the PDF we'll keep it as it is - as no changes and no ability to render lightning components as a pdf. But for the report-like and new/edit/view pages we have to change it to the lightning UI;
 
 ==== 1. Set the lightning styles
 
@@ -169,25 +169,25 @@ If you want it fast, your page is too big to transform and you just want it to *
   <apex:slds />
 
     <div class="slds-scope">
-    	<!-- CONTENT GOES HERE -->	
+        <!-- CONTENT GOES HERE -->    
     </div>
     
 </apex:page>
 ----
 
-That's IT! No changes in your controller, only some small changes in the page markup! But if you want to go even further..
+That's IT! No changes in your controller, only some small changes in the page markup! But if you want to go even further.
 
-==== 2. Transform the Visualforce page into set of Lightning Components
+==== 2. Transform the Visualforce page into a set of Lightning Components
 
-Well.. sometimes - this is hardcore, especially, if the backend composition is hard and depends on a *viewstate* - because there's no *viewstate* in Lighnting UI. I will not focus on the frontend changes - they will be huge, and they will be different from page to page. Please note, that some things are critically changed, especially input lookup (native one is unavailable) and some chatter vf tags.
+Well.. sometimes - this is hardcore, especially, if the backend composition is hard and depends on a *viewstate* - because there's no *viewstate* in Lightning UI. I will not focus on the frontend changes - they will be huge, and they will be different from page to page. Please note, that some things are critically changed, especially input lookup (native one is unavailable) and some chatter vf tags.
 
 But how to transform the backend? At first, we should answer two questions:
-- Should we use page both on Salesforce Classic and in Lightning UI? If yes, than consider lightning styles for visualforce page. Only do this if you cannot utilize VF page in two different places
+- Should we use page both on Salesforce Classic and in Lightning UI? If yes, then consider lightning styles for a visualforce page. Only do this if you cannot utilize VF page in two different places
 - Does you backend developed through @RemoteAction annotated methods, or it's done via viewstate instance methods?
 
 ===== RemoteAction changes
 
-RemoteAction changes are very simple - both VF and LC can use the *same* controller with the *same* methods! Example below will compile and work:
+RemoteAction changes are very simple - both VF and LC can use the *same* controller with the *same* methods! An example below will compile and work:
 
 .TestController.apxc
 [source,Java]
@@ -233,7 +233,7 @@ public with sharing class TestVFController {
 }
 ----
 
-We should split that. There should be some service which will perform some operations on a model (not inside the controller), we should somehow unite the model and separate the model from view model. Don't forget why we're doing this - to be able to reuse all of the code we did on a Lightning UI. Resulting code will be something like:
+We should split that. There should be some service which will perform some operations on a model (not inside the controller), we should somehow unite the model and separate the model from the view model. Don't forget why we're doing this - to be able to reuse all of the code we did on a Lightning UI. Resulting code will be something like:
 
 .TestVFController.apxc
 [source,Java]
@@ -324,11 +324,11 @@ public with sharing class TestLCController {
 }
 ----
 
-State is stored in LC as an Aura.Attribute - idea is to *mock* the viewstate by creating a new version of it. For creation and managing this State class you can utilize http://www.oodesign.com/memento-pattern.html[Memento] pattern 
+A state is stored in LC as an Aura.Attribute - an idea is to *mock* the viewstate by creating a new version of it. For creation and managing this State class, you can utilize http://www.oodesign.com/memento-pattern.html[Memento] pattern 
 
 == Final Thoughts
 
-Lightning Components - is a different view to the frontend - it's made to be reusable. Use the same button set for different pages, use lightning components as an building blocks. Visualforce Components were similiar - but developers worldwide didn't utilize the power of components and they are *not* designed as LC. So, this frontend change is the greatest change for development and a big challange for developers - will developers change thier mind about reusability?
+Lightning Components - is a different view of the frontend development - it's made to be reusable. Use the same button set for different pages, use lightning components as building blocks. Visualforce Components were similar - but developers worldwide didn't utilize the power of components and they are *not* designed as LC. So, this frontend change is the greatest change for development and a big challenge for developers - will developers change their mind about reusability?
 
 == Useful Resources
 
@@ -341,5 +341,3 @@ Lightning Components - is a different view to the frontend - it's made to be reu
 ** https://help.salesforce.com/articleView?id=lex_migrate_customizations.htm&type=5[Which customization blocks are not available in LEX]
 ** https://help.salesforce.com/articleView?id=lex_aloha_comparison.htm&type=5[Comparsion of the LEX and Salesforce Classic]
 ** https://help.salesforce.com/articleView?id=lex_considerations_intro.htm&type=5[Consideration Prior To Lightning Experience Rollout]
-
-
