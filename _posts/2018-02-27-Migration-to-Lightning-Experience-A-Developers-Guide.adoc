@@ -47,8 +47,43 @@ The main point here will be - change the javascript buttons to lightning quick a
 
 ==== 1. Identify The Process Behind Your Button
 
+There are alot of the use cases for Javascript buttons - from simple record update - to difficult business process of creation of the data model along with triggering the webservice from Apex. Basically, the more complex your javascript button logic is - the worse is system design - and this requires rework of the whole process. But for a simple record update/new records creation, there's a very simple process of transition, which in a result will give *No Changes* for an end user flow.
+
 ==== 2. Move the code and publish changes to the layout
 
+The simple example of the case javascript button named "Transform Social Case" 
+
+.transform-social-case.js
+[source,javascript]
+----
+{!REQUIRESCRIPT("/soap/ajax/23.0/connection.js")}; 
+
+var сaseObject = new sforce.SObject("Case"); 
+сaseObject.Id = "{!Case.Id}"; 
+var type = "{!Case.Type}";
+
+if ( type != "Social" ) 
+{ 
+    alert("error message for social case"); 
+} 
+
+else 
+{ 
+	сaseObject.Type = "Social Plus"; 
+	сaseObject.OwnerId = "{!$User.Id}"; 
+	var result = sforce.connection.update([caseObj]); 
+
+	if (result[0].success==&apos;false&apos;) 
+	{ 
+		alert(result[0].errors.message); 
+	} 
+
+	else 
+	{ 
+		location.reload(true); 
+	} 
+}
+----
 
 
 === Visualforce Pages
@@ -59,6 +94,10 @@ Every scenario here is pretty unique, however, few common page types can be sepa
 
 ==== 2. Transform the Visualforce page into set of Lightning Components
 
+
+== Final Thoughts
+
+Lightning Components - is a different view to the frontend - it's made to be reusable. Use the same button set for different pages, use lightning components as an building blocks. Visualforce Components were similiar - but developers worldwide didn't utilize the power of components and they are *not* designed as LC. So, this frontend change is the greatest change for development and a big challange for developers - will developers change thier mind about reusability?
 
 == Useful Resources
 
