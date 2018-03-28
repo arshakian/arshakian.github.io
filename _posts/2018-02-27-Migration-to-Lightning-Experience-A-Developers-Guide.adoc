@@ -54,7 +54,7 @@ There are alot of the use cases for Javascript buttons - from simple record upda
 The simple example of the case javascript button named "Transform Social Case" 
 
 .transform-social-case.js
-[source,javascript]
+[source,js]
 ----
 {!REQUIRESCRIPT("/soap/ajax/23.0/connection.js")}; 
 
