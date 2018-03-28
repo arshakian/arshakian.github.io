@@ -203,7 +203,128 @@ public class TestController {
 
 ===== Instance Methods Changes
 
+Let's say, that in 95% of all cases visualforce controllers contains both logic, model and view model data (view model data - is button enabled, Boolean showErrorMessage, etc). To be able to split to two different controllers - one for VF and one for LC we need to utilize full split of the classes: there will be *one* model, *two* viewmodels (if they are actually needed - can be just for VF while aura will handle all of the view models as aura:attributes) and *one* business logic component. 
+As the source, I'll take this VF controller:
 
+.TestVFController.apxc
+[source,Java]
+----
+public with sharing class TestVFController {
+    public Boolean hasAccountResults { get; private set; }
+    public Boolean hasBrandResults { get; private set; }
+    public Boolean isPopupEnabled { get; private set; }
+    public Boolean hasSearchBeenInitiated { get; private set; }
+
+
+    public List<SObjectModel> accounts;
+    public List<SObjectModel> brands;
+
+    public TestVFController() {
+        //some logic to init model
+    }
+
+    public void search(String term) {
+        //actual SOSL queries and model creation from SOSL results
+    }
+
+    public void save() {
+        //actual DML operations to unwrap the model and save
+    }
+}
+----
+
+We should split that. There should be some service which will perform some operations on a model (not inside the controller), we should somehow unite the model and separate the model from view model. Don't forget why we're doing this - to be able to reuse all of the code we did on a Lightning UI. Resulting code will be something like:
+
+.TestVFController.apxc
+[source,Java]
+----
+public with sharing class TestVFController {
+    public ViewModel viewModel { get; private set; }
+    //names should correspond to the processes and tasks for this class. 
+    //e.g. AccountModel if only accounts are in use, UpdateService if the service is doing update and so on.
+    // I'm putting the simple realization at the bottom of this class
+    public Model model { get; private set; }
+    private Service service {get; private set;}
+
+
+    public TestVFController() {
+        viewModel = new ViewModel();
+        service = new Service(); //should be common for two classes
+        model = service.initializeModel();
+    }
+
+    public void search(String term) {
+        service.search(model, term);
+    }
+
+    public void save() {
+        service.save(model);
+    }
+
+    public class ViewModel {
+        //some variables to control the view for VF page e.g. Boolean hasAccountResults
+
+        public ViewModel(){}
+    }
+
+    public class Model {
+        public List<SObjectModel> accounts;
+        public List<SObjectModel> brands;    
+
+        public Model(){}
+    }
+
+    public class Service {
+        public Service(){}
+
+        public void search(...) {}
+        public void save(...) {}
+    }
+}
+----
+
+.TestLCController.apxc
+[source,Java]
+----
+public with sharing class TestLCController {
+
+    @AuraEnabled
+    public static State initializeLightningComponent() {
+        State lightningComponentState = new State();
+        lightningComponentState.initialize(service);
+        return lightningComponentState;
+    }
+
+    @AuraEnabled
+    public static State search(State lightningComponentState, String term) {
+        lightningComponentState.service.search(lightningComponentState.model, term);
+        return lightningComponentState; //can be removed. But usually state is changed after operations like search
+    }
+
+    @AuraEnabled
+    public static State save(State lightningComponentState) {
+        lightningComponentState.service.save(lightningComponentState.model);
+        return lightningComponentState; //can be removed. But usually state is changed after operations like search
+    }
+
+    public class State {
+        public @AuraEnabled TestVFController.ViewModel viewModel;
+        public @AuraEnabled TestVFController.Model model;
+        public @AuraEnabled TestVFController.Service service;
+
+        public State() {}
+
+        public void initialize() {
+            viewModel = new TestVFController.ViewModel(); //This one can be completely removed as usually 
+                //view model info are not passed to apex controller and it's value determines inside of the javascript helpers
+            service = new TestVFController.Service();
+            model = service.initializeModel();
+        }
+    }
+}
+----
+
+State is stored in LC as an Aura.Attribute - idea is to *mock* the viewstate by creating a new version of it. For creation and managing this State class you can utilize http://www.oodesign.com/memento-pattern.html[Memento] pattern 
 
 == Final Thoughts
 
