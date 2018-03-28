@@ -49,7 +49,7 @@ The main point here will be - change the javascript buttons to lightning quick a
 
 There are alot of the use cases for Javascript buttons - from simple record update - to difficult business process of creation of the data model along with triggering the webservice from Apex. Basically, the more complex your javascript button logic is - the worse is system design - and this requires rework of the whole process. But for a simple record update/new records creation, there's a very simple process of transition, which in a result will give *No Changes* for an end user flow.
 
-==== 2. Move the code and publish changes to the layout
+==== 2. Move the code!
 
 The simple example of the case javascript button named "Transform Social Case" 
 
@@ -64,33 +64,102 @@ var type = "{!Case.Type}";
 
 if ( type != "Social" ) 
 { 
-    alert("error message for social case"); 
+    alert("error message for non-social case"); 
 } 
 
 else 
 { 
-	сaseObject.Type = "Social Plus"; 
-	сaseObject.OwnerId = "{!$User.Id}"; 
-	var result = sforce.connection.update([caseObj]); 
+	сaseObject.Type = "Social Plus";
+	var result = sforce.connection.update([сaseObject]); 
 
-	if (result[0].success==&apos;false&apos;) 
+	if (result[0].success == "true") 
 	{ 
-		alert(result[0].errors.message); 
+		location.reload(true); 
 	} 
 
 	else 
 	{ 
-		location.reload(true); 
+		alert(result[0].errors.message); 
 	} 
 }
 ----
 
+Process is simple as 1-2-3: Check the case type and update it if it's social. It's super easy to move this process to lightning component - no Apex required!
+
+.TransformSocialCaseAction.cmp
+[source,html]
+----
+<aura:component implements="force:LightningQuickActionWithoutHeader,force:hasRecordId">
+
+    <aura:attribute name="record" type="Object"/>
+    <aura:attribute name="simpleRecord" type="Object"/>
+    <aura:attribute name="recordError" type="String"/>
+
+    <force:recordData aura:id="recordLoader"
+      recordId="{!v.recordId}"
+      layoutType="FULL"
+      targetRecord="{!v.record}"
+      targetFields="{!v.simpleRecord}"
+      targetError="{!v.recordError}"
+      recordUpdated="{!c.handleRecordUpdated}"
+      />
+
+    <aura:if isTrue="{!not(empty(v.recordError))}">
+        <div class="recordError">
+            <ui:message title="Error" severity="error" closable="true">
+                {!v.recordError}
+            </ui:message>
+        </div>
+    </aura:if>
+</aura:component>
+----
+
+.TransformSocialCaseActionController.js
+[source,javascript]
+----
+({
+    handleRecordUpdated: function(component, event, helper) {
+        var eventParams = event.getParams();
+        if (eventParams.changeType === "LOADED") {
+            helper.updateSocialTypeCase(component);
+        }
+    }
+})
+----
+
+.TransformSocialCaseActionHelper.js
+[source,javascript]
+----
+({
+    updateSocialTypeCase : function(component) {
+        var caseObject = component.get("v.record");
+
+        if (caseObject.Type != "Social") {
+        	component.set("v.recordError", "error message for non-social case");
+        } else {
+        	caseObject.Type = "Social Plus"
+        	component.set("v.record", caseObject);
+        	component.find("recordLoader").saveRecord(
+        		$A.getCallback(
+        			function(saveResult) {
+        				//You can add error handling here
+        			}
+        		)
+        	);
+        }
+    }
+})
+----
+
+Final step will be simple - create action with this component for Case sObject and add it to the layout! No Apex/3rd-party library required.
 
 === Visualforce Pages
 
 Every scenario here is pretty unique, however, few common page types can be separated: Reports pages, PDF-rendered pages and new/edit/view papes. For the PDF we'll keep it as it is - as no changes and no ability to render lightning components as a pdf. But for the report-like and new/edit/view pages we have to change it to the lightning UI;
 
 ==== 1. Set the lightning styles
+
+
 
 ==== 2. Transform the Visualforce page into set of Lightning Components
 
