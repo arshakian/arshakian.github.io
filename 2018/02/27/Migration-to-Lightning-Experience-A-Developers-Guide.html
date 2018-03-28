@@ -23,7 +23,7 @@
     <meta property="og:url" content="https://arshakian.github.io/2018/02/27/Migration-to-Lightning-Experience-A-Developers-Guide.html" />
     <meta property="og:image" content="https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png" />
     <meta property="article:published_time" content="2018-02-26T22:00:00.000Z" />
-    <meta property="article:modified_time" content="2018-03-22T16:24:07.839Z" />
+    <meta property="article:modified_time" content="2018-03-28T12:40:37.265Z" />
     <meta property="article:tag" content="Development" />
     <meta property="article:tag" content="Lightning" />
     <meta property="article:tag" content="Aura" />
@@ -49,7 +49,7 @@
     "headline": "Migration to Lightning Experience: A Developer&#x27;s Guide",
     "url": "https://arshakian.github.io/2018/02/27/Migration-to-Lightning-Experience-A-Developers-Guide.html",
     "datePublished": "2018-02-26T22:00:00.000Z",
-    "dateModified": "2018-03-22T16:24:07.839Z",
+    "dateModified": "2018-03-28T12:40:37.265Z",
     "image": "https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png",
     "keywords": "Development,  Lightning,  Aura",
     "description": "Almost two and a half years has passed since Salesforce announced their new and sexy Lightning Experience (a.k.a. LEX) - I found this amazing, but lots of organizations are still using Salesforce Classic UI! It&amp;#8217;s true,..."
@@ -208,11 +208,47 @@ Below are the list of the features, which are <strong>not</strong> available in 
 </div>
 <div class="sect3">
 <h4 id="_1_identify_the_process_behind_your_button">1. Identify The Process Behind Your Button</h4>
-
+<div class="paragraph">
+<p>There are alot of the use cases for Javascript buttons - from simple record update - to difficult business process of creation of the data model along with triggering the webservice from Apex. Basically, the more complex your javascript button logic is - the worse is system design - and this requires rework of the whole process. But for a simple record update/new records creation, there&#8217;s a very simple process of transition, which in a result will give <strong>No Changes</strong> for an end user flow.</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_2_move_the_code_and_publish_changes_to_the_layout">2. Move the code and publish changes to the layout</h4>
+<div class="paragraph">
+<p>The simple example of the case javascript button named "Transform Social Case"</p>
+</div>
+<div class="listingblock">
+<div class="title">transform-social-case.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">{!REQUIRESCRIPT("/soap/ajax/23.0/connection.js")};
 
+var сaseObject = new sforce.SObject("Case");
+сaseObject.Id = "{!Case.Id}";
+var type = "{!Case.Type}";
+
+if ( type != "Social" )
+{
+    alert("error message for social case");
+}
+
+else
+{
+	сaseObject.Type = "Social Plus";
+	сaseObject.OwnerId = "{!$User.Id}";
+	var result = sforce.connection.update([caseObj]);
+
+	if (result[0].success==&amp;apos;false&amp;apos;)
+	{
+		alert(result[0].errors.message);
+	}
+
+	else
+	{
+		location.reload(true);
+	}
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -228,6 +264,14 @@ Below are the list of the features, which are <strong>not</strong> available in 
 <h4 id="_2_transform_the_visualforce_page_into_set_of_lightning_components">2. Transform the Visualforce page into set of Lightning Components</h4>
 
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_final_thoughts">Final Thoughts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Lightning Components - is a different view to the frontend - it&#8217;s made to be reusable. Use the same button set for different pages, use lightning components as an building blocks. Visualforce Components were similiar - but developers worldwide didn&#8217;t utilize the power of components and they are <strong>not</strong> designed as LC. So, this frontend change is the greatest change for development and a big challange for developers - will developers change thier mind about reusability?</p>
 </div>
 </div>
 </div>
