@@ -159,9 +159,50 @@ Every scenario here is pretty unique, however, few common page types can be sepa
 
 ==== 1. Set the lightning styles
 
+If you want it fast, your page is too big to transform and you just want it to *look* like Lightning UI? Quickest way will be just to add styles - although, it is limited (e.g. some VF tags are not available - click https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/vf_dev_best_practices_slds_lightningstylesheets.htm[here] for details). How to do this?
 
+.LightningPage.vfpage
+[source,HTML]
+----
+<apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0">
+
+  <apex:slds />
+
+    <div class="slds-scope">
+    	<!-- CONTENT GOES HERE -->	
+    </div>
+    
+</apex:page>
+----
+
+That's IT! No changes in your controller, only some small changes in the page markup! But if you want to go even further..
 
 ==== 2. Transform the Visualforce page into set of Lightning Components
+
+Well.. sometimes - this is hardcore, especially, if the backend composition is hard and depends on a *viewstate* - because there's no *viewstate* in Lighnting UI. I will not focus on the frontend changes - they will be huge, and they will be different from page to page. Please note, that some things are critically changed, especially input lookup (native one is unavailable) and some chatter vf tags.
+
+But how to transform the backend? At first, we should answer two questions:
+- Should we use page both on Salesforce Classic and in Lightning UI? If yes, than consider lightning styles for visualforce page. Only do this if you cannot utilize VF page in two different places
+- Does you backend developed through @RemoteAction annotated methods, or it's done via viewstate instance methods?
+
+===== RemoteAction changes
+
+RemoteAction changes are very simple - both VF and LC can use the *same* controller with the *same* methods! Example below will compile and work:
+
+.TestController.apxc
+[source,Java]
+----
+public class TestController {
+    
+	@AuraEnabled @RemoteAction
+    public static void remoteAction() {
+        //magic in here
+    }
+}
+----
+
+===== Instance Methods Changes
+
 
 
 == Final Thoughts
