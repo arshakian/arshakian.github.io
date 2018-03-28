@@ -23,7 +23,7 @@
     <meta property="og:url" content="https://arshakian.github.io/2018/02/27/Migration-to-Lightning-Experience-A-Developers-Guide.html" />
     <meta property="og:image" content="https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png" />
     <meta property="article:published_time" content="2018-02-26T22:00:00.000Z" />
-    <meta property="article:modified_time" content="2018-03-28T13:49:55.373Z" />
+    <meta property="article:modified_time" content="2018-03-28T21:04:14.155Z" />
     <meta property="article:tag" content="Development" />
     <meta property="article:tag" content="Lightning" />
     <meta property="article:tag" content="Aura" />
@@ -49,7 +49,7 @@
     "headline": "Migration to Lightning Experience: A Developer&#x27;s Guide",
     "url": "https://arshakian.github.io/2018/02/27/Migration-to-Lightning-Experience-A-Developers-Guide.html",
     "datePublished": "2018-02-26T22:00:00.000Z",
-    "dateModified": "2018-03-28T13:49:55.373Z",
+    "dateModified": "2018-03-28T21:04:14.155Z",
     "image": "https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png",
     "keywords": "Development,  Lightning,  Aura",
     "description": "Almost two and a half years has passed since Salesforce announced their new and sexy Lightning Experience (a.k.a. LEX) - I found this amazing, but lots of organizations are still using Salesforce Classic UI! It&amp;#8217;s true,..."
@@ -328,11 +328,59 @@ else
 </div>
 <div class="sect3">
 <h4 id="_1_set_the_lightning_styles">1. Set the lightning styles</h4>
+<div class="paragraph">
+<p>If you want it fast, your page is too big to transform and you just want it to <strong>look</strong> like Lightning UI? Quickest way will be just to add styles - although, it is limited (e.g. some VF tags are not available - click <a href="https://developer.salesforce.com/docs/atlas.en-us.pages.meta/pages/vf_dev_best_practices_slds_lightningstylesheets.htm">here</a> for details). How to do this?</p>
+</div>
+<div class="listingblock">
+<div class="title">LightningPage.vfpage</div>
+<div class="content">
+<pre class="highlight"><code class="language-HTML" data-lang="HTML">&lt;apex:page showHeader="false" standardStylesheets="false" sidebar="false" applyHtmlTag="false" applyBodyTag="false" docType="html-5.0"&gt;
 
+  &lt;apex:slds /&gt;
+
+    &lt;div class="slds-scope"&gt;
+    	&lt;!-- CONTENT GOES HERE --&gt;
+    &lt;/div&gt;
+
+&lt;/apex:page&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s IT! No changes in your controller, only some small changes in the page markup! But if you want to go even further..</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_2_transform_the_visualforce_page_into_set_of_lightning_components">2. Transform the Visualforce page into set of Lightning Components</h4>
+<div class="paragraph">
+<p>Well.. sometimes - this is hardcore, especially, if the backend composition is hard and depends on a <strong>viewstate</strong> - because there&#8217;s no <strong>viewstate</strong> in Lighnting UI. I will not focus on the frontend changes - they will be huge, and they will be different from page to page. Please note, that some things are critically changed, especially input lookup (native one is unavailable) and some chatter vf tags.</p>
+</div>
+<div class="paragraph">
+<p>But how to transform the backend? At first, we should answer two questions:
+- Should we use page both on Salesforce Classic and in Lightning UI? If yes, than consider lightning styles for visualforce page. Only do this if you cannot utilize VF page in two different places
+- Does you backend developed through @RemoteAction annotated methods, or it&#8217;s done via viewstate instance methods?</p>
+</div>
+<div class="sect4">
+<h5 id="_remoteaction_changes">RemoteAction changes</h5>
+<div class="paragraph">
+<p>RemoteAction changes are very simple - both VF and LC can use the <strong>same</strong> controller with the <strong>same</strong> methods! Example below will compile and work:</p>
+</div>
+<div class="listingblock">
+<div class="title">TestController.apxc</div>
+<div class="content">
+<pre class="highlight"><code class="language-Java" data-lang="Java">public class TestController {
 
+	@AuraEnabled @RemoteAction
+    public static void remoteAction() {
+        //magic in here
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_instance_methods_changes">Instance Methods Changes</h5>
+
+</div>
 </div>
 </div>
 </div>
