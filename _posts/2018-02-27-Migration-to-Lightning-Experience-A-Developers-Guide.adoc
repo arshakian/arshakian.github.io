@@ -194,7 +194,7 @@ RemoteAction changes are very simple - both VF and LC can use the *same* control
 ----
 public class TestController {
     
-	@AuraEnabled @RemoteAction
+    @AuraEnabled @RemoteAction
     public static void remoteAction() {
         //magic in here
     }
