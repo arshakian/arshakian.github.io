@@ -23,7 +23,7 @@
     <meta property="og:url" content="https://arshakian.github.io/2018/02/27/Migration-to-Lightning-Experience-A-Developers-Guide.html" />
     <meta property="og:image" content="https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png" />
     <meta property="article:published_time" content="2018-02-26T22:00:00.000Z" />
-    <meta property="article:modified_time" content="2018-03-28T12:45:07.907Z" />
+    <meta property="article:modified_time" content="2018-03-28T13:49:55.373Z" />
     <meta property="article:tag" content="Development" />
     <meta property="article:tag" content="Lightning" />
     <meta property="article:tag" content="Aura" />
@@ -49,7 +49,7 @@
     "headline": "Migration to Lightning Experience: A Developer&#x27;s Guide",
     "url": "https://arshakian.github.io/2018/02/27/Migration-to-Lightning-Experience-A-Developers-Guide.html",
     "datePublished": "2018-02-26T22:00:00.000Z",
-    "dateModified": "2018-03-28T12:45:07.907Z",
+    "dateModified": "2018-03-28T13:49:55.373Z",
     "image": "https://c1.sfdcstatic.com/content/dam/blogs/us/August2015/Home%20Screen.png",
     "keywords": "Development,  Lightning,  Aura",
     "description": "Almost two and a half years has passed since Salesforce announced their new and sexy Lightning Experience (a.k.a. LEX) - I found this amazing, but lots of organizations are still using Salesforce Classic UI! It&amp;#8217;s true,..."
@@ -213,7 +213,7 @@ Below are the list of the features, which are <strong>not</strong> available in 
 </div>
 </div>
 <div class="sect3">
-<h4 id="_2_move_the_code_and_publish_changes_to_the_layout">2. Move the code and publish changes to the layout</h4>
+<h4 id="_2_move_the_code">2. Move the code!</h4>
 <div class="paragraph">
 <p>The simple example of the case javascript button named "Transform Social Case"</p>
 </div>
@@ -228,26 +228,96 @@ var type = "{!Case.Type}";
 
 if ( type != "Social" )
 {
-    alert("error message for social case");
+    alert("error message for non-social case");
 }
 
 else
 {
 	сaseObject.Type = "Social Plus";
-	сaseObject.OwnerId = "{!$User.Id}";
-	var result = sforce.connection.update([caseObj]);
+	var result = sforce.connection.update([сaseObject]);
 
-	if (result[0].success==&amp;apos;false&amp;apos;)
+	if (result[0].success == "true")
 	{
-		alert(result[0].errors.message);
+		location.reload(true);
 	}
 
 	else
 	{
-		location.reload(true);
+		alert(result[0].errors.message);
 	}
 }</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Process is simple as 1-2-3: Check the case type and update it if it&#8217;s social. It&#8217;s super easy to move this process to lightning component - no Apex required!</p>
+</div>
+<div class="listingblock">
+<div class="title">TransformSocialCaseAction.cmp</div>
+<div class="content">
+<pre class="highlight"><code class="language-html" data-lang="html">&lt;aura:component implements="force:LightningQuickActionWithoutHeader,force:hasRecordId"&gt;
+
+    &lt;aura:attribute name="record" type="Object"/&gt;
+    &lt;aura:attribute name="simpleRecord" type="Object"/&gt;
+    &lt;aura:attribute name="recordError" type="String"/&gt;
+
+    &lt;force:recordData aura:id="recordLoader"
+      recordId="{!v.recordId}"
+      layoutType="FULL"
+      targetRecord="{!v.record}"
+      targetFields="{!v.simpleRecord}"
+      targetError="{!v.recordError}"
+      recordUpdated="{!c.handleRecordUpdated}"
+      /&gt;
+
+    &lt;aura:if isTrue="{!not(empty(v.recordError))}"&gt;
+        &lt;div class="recordError"&gt;
+            &lt;ui:message title="Error" severity="error" closable="true"&gt;
+                {!v.recordError}
+            &lt;/ui:message&gt;
+        &lt;/div&gt;
+    &lt;/aura:if&gt;
+&lt;/aura:component&gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">TransformSocialCaseActionController.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">({
+    handleRecordUpdated: function(component, event, helper) {
+        var eventParams = event.getParams();
+        if (eventParams.changeType === "LOADED") {
+            helper.updateSocialTypeCase(component);
+        }
+    }
+})</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">TransformSocialCaseActionHelper.js</div>
+<div class="content">
+<pre class="highlight"><code class="language-javascript" data-lang="javascript">({
+    updateSocialTypeCase : function(component) {
+        var caseObject = component.get("v.record");
+
+        if (caseObject.Type != "Social") {
+        	component.set("v.recordError", "error message for non-social case");
+        } else {
+        	caseObject.Type = "Social Plus"
+        	component.set("v.record", caseObject);
+        	component.find("recordLoader").saveRecord(
+        		$A.getCallback(
+        			function(saveResult) {
+        				//You can add error handling here
+        			}
+        		)
+        	);
+        }
+    }
+})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Final step will be simple - create action with this component for Case sObject and add it to the layout! No Apex/3rd-party library required.</p>
 </div>
 </div>
 </div>
