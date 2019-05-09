@@ -1,0 +1,11 @@
+= Summer '19 Release - Developer's Perspective
+
+:hp-image: https://secure.meetupstatic.com/photos/member/2/9/d/9/highres_273670713.jpeg
+:hp-tags: Development, Consultancy, Thoughts
+
+It's been awhile since my last post - and lots of things are happen both in my life and in Salesforce - just another proof, that I'm connected to the cloud (by any mean) :)
+Anyway, most posts about new release are just reminiscing the standard release notes, with a bit of hype words - like top 5, killer changes or so. Another issue with them, that they are *really* focused on development and not overall platform changes - which sometimes are way more important, than new and changed chatter-related apex classes.
+
+Without further introduction - here we go:
+
+== 
